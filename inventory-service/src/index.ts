@@ -12,7 +12,8 @@ const inventories: Inventory[] = [
   { id: '3', productId: '3', quantity: 20 },
 ];
 
-app.get('/inventories', (req:any, res:any) => {
+app.get('/inventories', (req: any, res: any) => {
+  console.log(inventories);
   res.json(inventories);
 });
 
@@ -33,8 +34,10 @@ app.get('/inventories/:productId', (req:any, res:any) => {
 app.put('/inventories/:productId', (req:any, res:any) => {
   const productId = req.params.productId;
   const quantity = req.body.quantity;
+ 
   const inventory = inventories.find(i => i.productId === productId);
   if (inventory) {
+    console.log("Request received to update inventory for product", productId, quantity);
     inventory.quantity = quantity;
     res.status(200).send('Inventory updated successfully!');
   } else {

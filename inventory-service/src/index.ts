@@ -12,7 +12,8 @@ const inventories: Inventory[] = [
   { id: '3', productId: '3', quantity: 20 },
 ];
 
-app.get('/inventories', (req:any, res:any) => {
+app.get('/inventories', (req: any, res: any) => {
+  console.log(inventories);
   res.json(inventories);
 });
 

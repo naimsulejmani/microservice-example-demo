@@ -34,8 +34,10 @@ app.get('/inventories/:productId', (req:any, res:any) => {
 app.put('/inventories/:productId', (req:any, res:any) => {
   const productId = req.params.productId;
   const quantity = req.body.quantity;
+ 
   const inventory = inventories.find(i => i.productId === productId);
   if (inventory) {
+    console.log("Request received to update inventory for product", productId, quantity);
     inventory.quantity = quantity;
     res.status(200).send('Inventory updated successfully!');
   } else {
